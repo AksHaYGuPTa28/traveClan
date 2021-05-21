@@ -54,8 +54,8 @@ export default function BasicTable(props) {
       if (minBid > elem?.amount) minBid = elem?.amount;
     });
 
-    console.log(maxBid);
     const rowData = {
+      id: ad.id,
       FirstName: ad.firstname,
       LastName: ad.lastname,
       Avatar: ad.avatarUrl,
@@ -66,7 +66,6 @@ export default function BasicTable(props) {
       minBid: minBid ? minBid : "Not Available",
     };
     rows.push(rowData);
-    console.log(rows);
   });
   const classes = useStyles();
 
@@ -115,7 +114,7 @@ export default function BasicTable(props) {
                 <TableCell align="right">{row.maxBid}</TableCell>
                 <TableCell align="right">{row.minBid}</TableCell>
                 <TableCell align="right">
-                  <Link to={`\bid?id=${row.id}`}>
+                  <Link to={`/bid?id=${row.id}`}>
                     <Button variant="contained" color="primary">
                       See Bids
                     </Button>
