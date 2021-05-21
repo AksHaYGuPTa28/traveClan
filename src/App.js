@@ -38,7 +38,11 @@ const App = () => {
             component={(props) => <Table data={fetchData} />}
             exact
           />
-          <Route path="/bid" component={Bidtable} />
+          <Route
+            path="/"
+            component={(props) => <Bidtable data={fetchData} />}
+            exact
+          />
         </Switch>
       </div>
     </BrowserRouter>

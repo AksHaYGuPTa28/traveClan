@@ -45,6 +45,16 @@ const rows = [];
 
 export default function BasicTable(props) {
   props.data.map((ad) => {
+    let maxBid = ad.bids[0]?.amount;
+    ad.bids.forEach(function (elem) {
+      if (maxBid < elem?.amount) maxBid = elem?.amount;
+    });
+    let minBid = ad.bids[0]?.amount;
+    ad.bids.forEach(function (elem) {
+      if (minBid > elem?.amount) minBid = elem?.amount;
+    });
+
+    console.log(maxBid);
     const rowData = {
       FirstName: ad.firstname,
       LastName: ad.lastname,
@@ -52,9 +62,11 @@ export default function BasicTable(props) {
       Email: ad.email,
       Phone: ad.phone,
       PremiumMember: ad.hasPremium ? "True" : "False",
+      maxBid: maxBid ? maxBid : "Not Available",
+      minBid: minBid ? minBid : "Not Available",
     };
-
     rows.push(rowData);
+    console.log(rows);
   });
   const classes = useStyles();
 
@@ -100,11 +112,13 @@ export default function BasicTable(props) {
                 <TableCell align="right">{row.Email}</TableCell>
                 <TableCell align="right">{row.Phone}</TableCell>
                 <TableCell align="right">{row.PremiumMember}</TableCell>
-                <TableCell align="right">{row.MaximumBid}</TableCell>
-                <TableCell align="right">{row.MinimumBid}</TableCell>
+                <TableCell align="right">{row.maxBid}</TableCell>
+                <TableCell align="right">{row.minBid}</TableCell>
                 <TableCell align="right">
-                  <Link to="/bid">
-                    <Button>Book Now</Button>
+                  <Link to={`\bid?id=${row.id}`}>
+                    <Button variant="contained" color="primary">
+                      See Bids
+                    </Button>
                   </Link>
                 </TableCell>
               </TableRow>
