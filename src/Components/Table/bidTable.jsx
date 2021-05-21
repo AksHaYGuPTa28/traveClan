@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 350,
   },
 });
 
@@ -40,7 +40,7 @@ export default function BasicTable(props) {
   return (
     <div>
       <Navbar />
-      <h1>Bids can be seen here!!</h1>
+      <h1 style={{ textAlign: "center" }}>Bids can be seen here!!</h1>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>

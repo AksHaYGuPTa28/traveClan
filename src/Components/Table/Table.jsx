@@ -73,7 +73,7 @@ export default function BasicTable(props) {
     <div>
       <Navbar />
       <TableContainer component={Paper}>
-        <h1>Customers list</h1>
+        <h1 style={{ textAlign: "center" }}>Customers list</h1>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
